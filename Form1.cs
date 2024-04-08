@@ -18,29 +18,13 @@ namespace lab4
                 switch (rnd.Next() % 3)
                 {
                     case 0:
-                        this.list.Add(new Auto
-                        {
-                            type = TransportType.Автомобиль,
-                            carType = (CarTypes)rnd.Next(Enum.GetValues(typeof(CarTypes)).Length),
-                            EngineCapacity = rnd.Next(101),
-                            DoorsCount = rnd.Next(3, 6)
-                        });
+                        this.list.Add(Auto.Generate());
                         break;
                     case 1:
-                        this.list.Add(new Plane
-                        {
-                            type = TransportType.Самолет,
-                            engineType = (EngineTypes)rnd.Next(Enum.GetValues(typeof(EngineTypes)).Length),
-                            FlightHigh = rnd.NextDouble() * 10000
-                        });
+                        this.list.Add(Plane.Generate());
                         break;
                     case 2:
-                        this.list.Add(new Bike
-                        {
-                            type = TransportType.Велосипед,
-                            bikeType = (BikeTypes)rnd.Next(Enum.GetValues(typeof(BikeTypes)).Length),
-                            radius = rnd.Next(10, 31)
-                        });
+                        this.list.Add(Bike.Generate());
                         break;
                 }
             }
@@ -55,7 +39,7 @@ namespace lab4
 
             foreach (var transport in this.list)
             {
-                switch (transport.type)
+                switch (transport.Type)
                 {
                     case TransportType.Велосипед:
                         bikesCount++;
