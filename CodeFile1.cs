@@ -112,7 +112,7 @@ namespace lab4
         public static Random rnd = new Random();
         public virtual string GetInfo()
         {
-            return $"Тип транспорта: {Type}";
+            return $"Тип транспорта: {Type} ";
         }
     }
 }

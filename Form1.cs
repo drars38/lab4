@@ -13,20 +13,27 @@ namespace lab4
         private void button2_Click(object sender, EventArgs e)
         {
             this.list.Clear();
+            listBoxQ.Items.Clear(); // Очистить список перед добавлением новых элементов
             for (var i = 0; i < 10; ++i)
             {
+                Transport newTransport;
                 switch (rnd.Next() % 3)
                 {
                     case 0:
-                        this.list.Add(Auto.Generate());
+                        newTransport = Auto.Generate();
                         break;
                     case 1:
-                        this.list.Add(Plane.Generate());
+                        newTransport = Plane.Generate();
                         break;
                     case 2:
-                        this.list.Add(Bike.Generate());
+                        newTransport = Bike.Generate();
+                        break;
+                    default:
+                        newTransport = null;
                         break;
                 }
+                this.list.Add(newTransport);
+                listBoxQ.Items.Add(newTransport.GetInfo());
             }
             ShowInfo();
         }
@@ -68,7 +75,7 @@ namespace lab4
 
             var transport = this.list[0];
             this.list.RemoveAt(0);
-
+            listBoxQ.Items.RemoveAt(0);
             txtOut.Text = transport.GetInfo();
 
             ShowInfo();
